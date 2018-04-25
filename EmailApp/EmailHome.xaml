@@ -1,0 +1,65 @@
+﻿<Controls:MetroWindow x:Class="EmailApp.EmailHome"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        Title="Email App" Height="400" Width="825" BorderThickness="2" BorderBrush="Black" Icon="/Images/MeControl.jpg" SaveWindowPosition="True">
+    
+    <Controls:MetroWindow.WindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="settings" x:Name="BtnConfigurer" Click="BtnConfigurer_Click" />
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20" Height="20">
+                        <Rectangle.Resources>
+                            <SolidColorBrush x:Key="BlackBrush" Color="White" />
+                        </Rectangle.Resources>
+                        <Rectangle.Fill>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cupcake}"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <TextBlock Text="deploy cupcakes" />
+                </StackPanel>
+            </Button>
+
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.WindowCommands>
+
+
+    <Grid Style="{StaticResource ContentRoot}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".3*"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".02*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="BtnGetEmails" Content="Get Emails" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Click="BtnGetEmails_Click"/>
+        <Button x:Name="BtnCancel" Content="Cancel" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Click="BtnCancel_Click"/>
+        <ProgressBar x:Name="EmailDownloadProgressBar" Grid.ColumnSpan="3" Grid.Row="1" />
+        <ScrollViewer Grid.Column="0" HorizontalScrollBarVisibility="Disabled" Grid.Row="2" Margin="{StaticResource SplitLeft}">
+            <StackPanel ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListBox x:Name="EmailList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" VerticalAlignment="Stretch" SelectionChanged="EmailList_SelectionChanged">
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+        <GridSplitter Grid.Column="1" Grid.Row="2" />
+        <ScrollViewer Grid.Column="2" Grid.Row="2" Margin="{StaticResource SplitRight}">
+            <DockPanel LastChildFill="False">
+                <RichTextBox x:Name="EmailBody"  IsReadOnly="True">
+                    <FlowDocument>
+                        <Paragraph>
+                            <Run Text="RichTextBox"/>
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox>
+            </DockPanel>
+
+        </ScrollViewer>
+        
+        
+
+    </Grid>
+</Controls:MetroWindow>
